@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Competitions - Team Bharadwaj</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Kt+X6C0iDlz57qQ3Ytk7s0XkTTQyJ7h6U6M7wZ+6X5JZ0yR5J/RJQke4Xb9UeL9e5YkbvZ9Ck9Jxj2Yz0OiUyg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Roboto', sans-serif; background: linear-gradient(135deg, #000080, #301934, #C71585); color:white; line-height:1.6; overflow-x:hidden; }
+
+/* Navbar */
+.navbar {
+    background-color: rgba(0,0,0,0.85);
+    padding:1rem;
+    position: fixed;
+    width: 100%;
+    top:0;
+    z-index:1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.navbar-logo { display:flex; align-items:center; }
+.navbar-logo img { width:50px; height:50px; margin-right:0.5rem; }
+.navbar-logo h1 { font-family:'Orbitron',sans-serif; font-size:1.5rem; color:white; }
+.navbar ul { list-style:none; display:flex; gap:2rem; justify-content: center; flex-grow: 1; }
+.navbar a { color:white; text-decoration:none; font-family:'Orbitron',sans-serif; font-size:1.1rem; text-transform:uppercase; transition: color 0.3s ease, transform 0.3s ease; }
+.navbar a:hover { color:#C71585; transform:scale(1.1); }
+
+/* Hero Section */
+.hero {
+    height:60vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+    text-align:center;
+}
+.hero-logo { width:200px; height:auto; }
+
+/* Content */
+.content { max-width:1200px; margin:0 auto; padding:5rem 1.5rem 2rem 1.5rem; }
+.section { margin-bottom:5rem; }
+.section-card {
+    background: rgba(0,0,0,0.85); /* Semi-transparent black, matching index.html */
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    margin-bottom: 2rem;
+}
+.section h2 { font-family:'Orbitron',sans-serif; font-size:2.5rem; color:white; margin-bottom:1.5rem; text-align:center; }
+
+/* Timeline */
+.timeline {
+    position: relative;
+    padding: 2rem 0;
+}
+.timeline::before {
+    content: '';
+    position: absolute;
+    width: 6px;
+    background: #C71585;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.timeline-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 3rem;
+    position: relative;
+}
+.timeline-item:nth-child(even) {
+    flex-direction: row-reverse;
+}
+.timeline-content {
+    width: 45%;
+    padding: 1.5rem;
+}
+.timeline-carousel {
+    width: 45%;
+    background: #1a2a44; /* Navy blue, matching other pages */
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.timeline-content h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8rem;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+.timeline-content p {
+    font-size: 1.2rem;
+    color: #C71585;
+}
+.timeline-content .date {
+    font-size: 1rem;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #C71585;
+    border-radius: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+/* Carousel */
+.carousel {
+    position: relative;
+    overflow: hidden;
+}
+.carousel-inner {
+    display: flex;
+    animation: scroll 15s linear infinite;
+}
+.carousel-inner img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-right: 1rem;
+}
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-66.66%); } /* Adjusted for 3 images */
+}
+
+/* Footer */
+.footer { background:rgba(0,0,0,0.9); padding:3rem 1.5rem; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:2rem; }
+.footer-section h3 { font-family:'Orbitron',sans-serif; font-size:1.6rem; color:#C71585; margin-bottom:1rem; }
+.footer a { color:white; text-decoration:none; display:block; margin-bottom:0.5rem; transition:color 0.3s ease; }
+.footer a:hover { color:#C71585; }
+
+/* Smooth scroll behavior */
+html { scroll-behavior: smooth; }
+
+/* Responsive */
+@media(max-width:768px){
+    .navbar ul { flex-direction:column; gap:1rem; margin-right:0; }
+    .timeline::before { left: 20px; }
+    .timeline-item { flex-direction: column; }
+    .timeline-item:nth-child(even) { flex-direction: column; }
+    .timeline-content, .timeline-carousel { width: 100%; margin-bottom: 1rem; }
+    .timeline-item::before { left: 20px; transform: translateX(0); }
+}
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="navbar-logo">
+        <img src="images/college_logo.png" alt="College Logo">
+        <img src="images/logo_black.png" alt="Team Bharadwaj Logo">
+        <h1>Team Bharadwaj</h1>
+    </div>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="competition.html">Competitions</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="sponsor.html">Sponsors</a></li>
+        <li><a href="#contact-us">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+    <img src="images/logo_blue.png" alt="Team Bharadwaj Logo" class="hero-logo">
+</section>
+
+<!-- Main Content -->
+<div class="content">
+    <div class="section">
+        <div class="section-card">
+            <h2>Our Competitions</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-carousel">
+                        <div class="carousel">
+                            <div class="carousel-inner">
+                                <img src="path/to/competition1-1.jpg" alt="SAE DDC 2024 Image 1">
+                                <img src="path/to/competition1-2.jpg" alt="SAE DDC 2024 Image 2">
+                                <img src="path/to/competition1-3.jpg" alt="SAE DDC 2024 Image 3">
+                                <img src="path/to/competition1-1.jpg" alt="SAE DDC 2024 Image 1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>SAE DDC 2024</h3>
+                        <p class="date">March 2024</p>
+                        <p>Competed in the SAE Drone Design Challenge, securing a Top 10 rank with our innovative fixed-wing UAV design.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-carousel">
+                        <div class="carousel">
+                            <div class="carousel-inner">
+                                <img src="path/to/competition2-1.jpg" alt="Drone Challenge 2023 Image 1">
+                                <img src="path/to/competition2-2.jpg" alt="Drone Challenge 2023 Image 2">
+                                <img src="path/to/competition2-3.jpg" alt="Drone Challenge 2023 Image 3">
+                                <img src="path/to/competition2-1.jpg" alt="Drone Challenge 2023 Image 1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Drone Challenge 2023</h3>
+                        <p class="date">September 2023</p>
+                        <p>Achieved Best Design Award for our multirotor drone, showcasing advanced avionics and aerodynamics.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-carousel">
+                        <div class="carousel">
+                            <div class="carousel-inner">
+                                <img src="path/to/competition3-1.jpg" alt="AeroFest 2022 Image 1">
+                                <img src="path/to/competition3-2.jpg" alt="AeroFest 2022 Image 2">
+                                <img src="path/to/competition3-3.jpg" alt="AeroFest 2022 Image 3">
+                                <img src="path/to/competition3-1.jpg" alt="AeroFest 2022 Image 1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>AeroFest 2022</h3>
+                        <p class="date">November 2022</p>
+                        <p>Won the Innovation Prize for our unique stabilizer design, demonstrating precision engineering.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-section" id="contact-us">
+        <h3>Contact Us</h3>
+        <p>Email: info@teambharadwaj.com</p>
+        <p>Phone: +123-456-7890</p>
+    </div>
+    <div class="footer-section">
+        <h3>Quick Links</h3>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="team.html">Team</a>
+        <a href="competition.html">Competitions</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="sponsor.html">Sponsors</a>
+        <a href="#contact-us">Contact</a>
+    </div>
+    <div class="footer-section">
+        <h3>Follow Us</h3>
+        <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    </div>
+    <div class="footer-section">
+        <h3>Find Us</h3>
+        <p>Address: Your Institution, City, Country</p>
+    </div>
+</footer>
+
+</body>
+</html>
